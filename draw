@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+from __future__ import print_function
+
+import turtle as t
+
+
+palette = {
+    'H': 'red',      # hat
+    'h': '#472306',  # hair
+    'b': '#ffc142',  # body
+    'e': 'black',    # eyes
+    'm': 'black',    # moustache
+    's': 'red',      # shirt
+    'p': 'blue',     # pants
+    'B': 'yellow',   # buttons
+    't': '#472306'   # boots
+}
+
+image = (
+    '     HHHHH      ',
+    '    HHHHHHHHH   ',
+    '    hhhbbeb     ',
+    '   hbhbbbebbb   ',
+    '   hbhhbbbmbbb  ',
+    '    hbbbbmmmm   ',
+    '     bbbbbb     ',
+    '    sspsspss    ',
+    '   ssspsspsss   ',
+    '  ssssppppssss  ',
+    '  bbspBppBpsbb  ',
+    '  bbbppppppbbb  ',
+    '  bbppppppppbb  ',
+    '    ppp  ppp    ',
+    '   ttt    ttt   ',
+    '  tttt    tttt  '
+)
+
+
+def draw(image, palette, step=30):
+    assert image and image[0], 'Empty image'
+    assert len(set(map(len, image))) == 1, 'Image rows have different lengths'
+    t.speed(0)
+    t.screensize(len(image[0])*step, len(image)*step)
+    t.up()
+    t.goto(-t.window_width()/2, t.window_height()/2)
+    t.down()
+    for row in image:
+        t.setheading(0)
+        for pixel in row:
+            if pixel != ' ':
+                t.color(palette[pixel])
+                t.begin_fill()
+                for i in range(4):
+                    t.forward(step)
+                    t.right(90)
+                t.end_fill()
+            t.up()
+            t.forward(step)
+            t.down()
+        t.up()
+        t.backward(len(row)*step)
+        t.setheading(-90)
+        t.forward(step)
+        t.down()
+    t.hideturtle()
+    t.done()
+
+
+if __name__ == '__main__':
+    draw(image, palette)
