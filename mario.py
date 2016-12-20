@@ -3,6 +3,7 @@ from __future__ import print_function
 
 import turtle as t
 
+
 colors = {
 	'body': '#ffc142',
 	'eyes': 'black',
@@ -51,23 +52,27 @@ def square(a, clockwise=True):
 	rectangle(a, a, clockwise)
 
 
+def color(name):
+        t.color(colors[name])
+
+
 def half_body(right=True):
 	start = t.pos()
 	t.setheading(-90)  # look down
 	t.down()
-	t.color(colors['shirt'])
+	color('shirt')
 	rectangle(2, 1, not right)
 	l() if right else r()
 	f(1)
-	t.color(colors['pants'])
+	color('pants')
 	rectangle(1, 3, right)
 	t.setheading(-90)
 	f(2)
 	rectangle(4, 1, right)
 	f(1)
-	t.color(colors['buttons'])
+	color('buttons')
 	square(1, not right)
-	t.color(colors['pants'])
+	color('pants')
 	f(1)
 	rectangle(3, 2, not right)
 	l() if right else r()
@@ -77,7 +82,7 @@ def half_body(right=True):
 	f(1)
 
 	# Sleeve.
-	t.color(colors['shirt'])
+	color('shirt')
 	t.begin_fill()
 	f(3)
 	r() if right else l()
@@ -102,25 +107,25 @@ def half_body(right=True):
 	# Hand.
 	b(2)
 	r(180)
-	t.color(colors['body'])
+	color('body')
 	rectangle(2, 3, right)
 	t.setheading(-90)
 	f(1)
 	square(1, right)
 	f(1)
 
-	t.color(colors['pants'])
+	color('pants')
 	rectangle(2, 1, right)
 	f(2)
-	
-	t.color(colors['boots'])
+
+	color('boots')
 	l() if right else r()
 	f(1)
 	t.setheading(-90)
 	rectangle(2, 3, right)
 	f(1)
 	square(1, not right)
-	
+
 	t.up()
 	t.goto(start)
 
@@ -132,7 +137,7 @@ t.down()
 t.speed(0)
 
 # Hat.
-t.color(colors['hat'])
+color('hat')
 t.begin_fill()
 f(5)
 r()
@@ -156,7 +161,7 @@ t.up()
 b(2)
 r()
 t.down()
-t.color(colors['hair'])
+color('hair')
 t.begin_fill()
 f(2)
 r()
@@ -189,7 +194,7 @@ square(1, False)
 l()
 
 # Ear.
-t.color(colors['body'])
+color('body')
 rectangle(1, 2, False)
 
 # Face.
@@ -256,11 +261,11 @@ f(1)
 t.end_fill()
 
 # Eye.
-t.color(colors['eyes'])
+color('eyes')
 rectangle(1, 2)
 l()
 # Moustache.
-t.color(colors['moustache'])
+color('moustache')
 square(1, False)
 f(1)
 square(1)
