@@ -2,9 +2,10 @@
 from __future__ import print_function
 
 import turtle as t
+import time
 
 
-palette = {
+palette_mario = {
     'H': 'red',      # hat
     'h': '#472306',  # hair
     'b': '#ffc142',  # body
@@ -16,7 +17,7 @@ palette = {
     't': '#472306'   # boots
 }
 
-image = (
+image_mario = (
     '     HHHHH      ',
     '    HHHHHHHHH   ',
     '    hhhbbeb     ',
@@ -35,10 +36,36 @@ image = (
     '  tttt    tttt  '
 )
 
+palette_link = {
+    'g': 'green',
+    'b': '#dd5509',  # brown
+    'y': '#f4963c'   # yellowish
+}
+
+image_link = (
+    '    gggggg   ',
+    '   gggggggg  ',
+    ' y gbbbbbbg y',
+    ' y bbbbbbbb y',
+    ' yybygyygybyy',
+    ' yybybyybybyy',
+    ' yyyyyyyyyyyb',
+    '   gyybbyygbb',
+    ' bbbbbyyygggy',
+    'bbybbbbgggggy',
+    'byyybbybbggb ',
+    'bbybbbygbbbg ',
+    'bbybbbybbggg ',
+    'bbbbbbygggb  ',
+    ' yyyyy  bbb  ',
+    '        bbb  '
+)
+
 
 def draw(image, palette, step=30):
     assert image and image[0], 'Empty image'
     assert len(set(map(len, image))) == 1, 'Image rows have different lengths'
+    t.reset()
     t.speed(0)
     t.screensize(len(image[0])*step, len(image)*step)
     t.up()
@@ -63,8 +90,11 @@ def draw(image, palette, step=30):
         t.forward(step)
         t.down()
     t.hideturtle()
-    t.done()
+
 
 
 if __name__ == '__main__':
-    draw(image, palette)
+    draw(image_mario, palette_mario)
+    time.sleep(2)
+    draw(image_link, palette_link)
+    t.done()

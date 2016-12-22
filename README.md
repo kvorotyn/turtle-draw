@@ -1,3 +1,3 @@
-Draw 8-bit Mario using turtle graphics.
+Draw 8-bit Mario and Link using turtle graphics.
 
 This is an educational and recreational project.
